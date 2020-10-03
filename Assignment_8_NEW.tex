@@ -221,15 +221,7 @@ Normalizing the eigenvectors we get,
 \vec{v_2} = \frac{1}{\sqrt{13}}\myvec{3\\2}\\
 \implies \vec{V} = \frac{1}{\sqrt{13}}\myvec{-2&3\\3&2}\label{V}
 \end{align}
-Now $\vec{S}$ corresponding to eigenvalues $\lambda_1$ and $\lambda_2$ is as follows,
-\begin{align}
-\vec{S} = \myvec{\sqrt{14}&0\\0&1\\0&0}
-\end{align}
-Now, Moore-Penrose Pseudo inverse of $\vec{S}$ is given by,
-\begin{align}
-\vec{S}_+ = \myvec{\sqrt{14}&0&0\\0&1&0}\label{S+}
-\end{align}
-Now calulating the eigenvectors corresponding to $\vec{MM}^T$
+Now calculating the eigenvectors corresponding to $\vec{MM}^T$
 \begin{align}
 \vec{MM}^T = \myvec{1&0\\0&1\\-2&3}\myvec{1&0&-2\\0&1&3} \\\implies \myvec{1&0&-2\\0&1&3\\-2&3&13}
 \end{align}
@@ -256,6 +248,14 @@ Normalizing the eigenvectors we get,
 \vec{v_5} = \frac{1}{\sqrt{14}}\myvec{2\\-3\\1}= \myvec{\sqrt{\frac{2}{7}}\\-\frac{3}{\sqrt{14}}\\\sqrt{\frac{1}{14}}}\\
 \implies \vec{U} = \myvec{-\sqrt{\frac{2}{91}} &\frac{3}{\sqrt{13}} & \sqrt{\frac{2}{7}}\\\frac{3}{\sqrt{182}} &\frac{2}{\sqrt{13}} &-\frac{3}{\sqrt{14}} \\\sqrt{\frac{13}{14}} &0 & \sqrt{\frac{1}{14}}} \label{U}
 \end{align} 
+Now $\vec{S}$ corresponding to eigenvalues $\lambda_3$, $\lambda_4$ and  $\lambda_5$ is as follows,
+\begin{align}
+\vec{S} = \myvec{\sqrt{14}&0\\0&1\\0&0}
+\end{align}
+Now, Moore-Penrose Pseudo inverse of $\vec{S}$ is given by,
+\begin{align}
+\vec{S}_+ = \myvec{\frac{1}{\sqrt{14}}&0&0\\0&1&0}\label{S+}
+\end{align}
 Hence we get singular value decomposition of $\vec{M}$ as,
 \begin{align}
 \vec{M} = \frac{1}{\sqrt{13}}\myvec{-\sqrt{\frac{2}{91}} &\frac{3}{\sqrt{13}} & \sqrt{\frac{2}{7}}\\\frac{3}{\sqrt{182}} &\frac{2}{\sqrt{13}} &-\frac{3}{\sqrt{14}} \\\sqrt{\frac{13}{14}} &0 & \sqrt{\frac{1}{14}}}\myvec{\sqrt{14}&0\\0&1\\0&0}\myvec{-2&3\\3&2}^T
@@ -266,15 +266,15 @@ Now substituting the values of \eqref{V}, \eqref{S+}, \eqref{U} and \eqref{b} in
 \implies \vec{U}^T\vec{b} = \myvec{\frac{-29}{\sqrt{182}}\\\frac{11}{\sqrt{13}}\\\frac{-13}{\sqrt{14}}}\label{Utb}
 \end{align}
 \begin{align}
-\vec{V}\vec{S}_+ = \frac{1}{\sqrt{13}}\myvec{-2&3\\3&2}\myvec{\sqrt{14}&0&0\\0&1&0}\\
-\implies \vec{V}\vec{S}_+ =\frac{1}{\sqrt{13}}\myvec{-2\sqrt{14}&3&0\\3\sqrt{14}&2&0}
+\vec{V}\vec{S}_+ = \frac{1}{\sqrt{13}}\myvec{-2&3\\3&2}\myvec{\frac{1}{\sqrt{14}}&0&0\\0&1&0}\\
+\implies \vec{V}\vec{S}_+ =\frac{1}{\sqrt{13}\sqrt{14}}\myvec{-2&3\sqrt{14}&0\\3&2\sqrt{14}&0}
 \end{align}
 $\therefore$ from equation \eqref{x},
 \begin{align}
-\vec{x} = \frac{1}{\sqrt{13}}\myvec{-2\sqrt{14}&3&0\\3\sqrt{14}&2&0} \myvec{\frac{-29}{\sqrt{182}}\\\frac{11}{\sqrt{13}}\\\frac{-13}{\sqrt{14}}}\label{fx}
+\vec{x} = \frac{1}{\sqrt{13}\sqrt{14}}\myvec{-2&3\sqrt{14}&0\\3&2\sqrt{14}&0} \myvec{\frac{-29}{\sqrt{182}}\\\frac{11}{\sqrt{13}}\\\frac{-13}{\sqrt{14}}}\label{fx}
 \end{align} 
 \begin{align}
-\implies \vec{x} = \myvec{7\\-5}
+\implies \vec{x} = \myvec{\frac{20}{7}\\\frac{17}{14}} \label{x_svd}
 \end{align}
 Verifying the solution using,
 \begin{align}
@@ -290,6 +290,7 @@ Solving the augmented matrix we get,
 \xleftrightarrow[]{R_2\leftarrow R_2+6R_1}\myvec{1&-\frac{6}{5}&\frac{7}{5}\\0&\frac{14}{5}&\frac{17}{5}}\\
 \xleftrightarrow[]{R_2\leftarrow \frac{5}{14}R_2}\myvec{1&-\frac{6}{5}&\frac{7}{5}\\0&1&\frac{17}{14}}\\
 \xleftrightarrow[]{R_1\leftarrow R_1+\frac{6}{5}R_2}\myvec{1&0&\frac{20}{7}\\0&1&\frac{17}{14}}\\
-\implies \vec{x} = \myvec{\frac{20}{7}\\\frac{17}{14}}
+\implies \vec{x} = \myvec{\frac{20}{7}\\\frac{17}{14}}\label{x_rref}
 \end{align}
+Hence from equations \eqref{x_svd} and \eqref{x_rref} we conclude that the solution is verified.  
 \end{document}
